@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap (uncomment and update after creating sitemap.xml)
+# Sitemap: https://danielhanke.com/sitemap.xml
+
+# Block legal pages from search
+Disallow: /pages/impressum.html
+Disallow: /pages/datenschutz.html

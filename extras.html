@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extras – Bonus-Bereich | Daniel Hanke</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;450;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>DH</text></svg>">
+
+  <style>
+    /* Extras Page Specific Styles */
+    .extras-hero {
+      padding: 10rem 0 4rem;
+      background: var(--color-bg-warm);
+      text-align: center;
+    }
+
+    .extras-hero p {
+      max-width: 620px;
+      margin: 1rem auto 0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .extras-nav {
+      position: sticky;
+      top: 72px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-light);
+      padding: 0.75rem 0;
+      overflow-x: auto;
+    }
+
+    .extras-nav__inner {
+      display: flex;
+      gap: 0.5rem;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      white-space: nowrap;
+    }
+
+    .extras-nav__link {
+      display: inline-block;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-text-light);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      transition: all var(--transition);
+      flex-shrink: 0;
+    }
+
+    .extras-nav__link:hover {
+      border-color: var(--color-accent);
+      color: var(--color-primary);
+      background: var(--color-bg-warm);
+    }
+
+    .extra-section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .extra-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .extra-section__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .extra-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .extra-section > .container > p {
+      max-width: 720px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--color-bg-warm);
+      border: 1.5px solid var(--color-border);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      transition: all var(--transition);
+    }
+
+    .download-btn:hover {
+      border-color: var(--color-accent);
+      background: #fff;
+    }
+
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .download-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .method-step {
+      padding: 1.5rem;
+      background: var(--color-bg-warm);
+      border-radius: 6px;
+      border-left: 3px solid var(--color-accent-warm);
+    }
+
+    .method-step__number {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .method-step h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .method-step p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .method-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .quiz-option {
+      padding: 1rem 1.5rem;
+      background: var(--color-bg);
+      border: 1.5px solid var(--color-border);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      transition: all var(--transition);
+      cursor: default;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--color-accent);
+    }
+
+    .course-modules {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.5rem;
+      border: 1px solid var(--color-border-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .course-module {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--color-border-light);
+      transition: background var(--transition);
+    }
+
+    .course-module:last-child {
+      border-bottom: none;
+    }
+
+    .course-module:hover {
+      background: var(--color-bg-warm);
+    }
+
+    .course-module__number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-alt);
+      color: var(--color-accent);
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 50%;
+    }
+
+    .course-module__title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .course-module__subtitle {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .meditation-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 1.5rem;
+      border: 1px solid var(--color-border-light);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .meditation-day {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--color-border-light);
+      transition: background var(--transition);
+    }
+
+    .meditation-day:last-child {
+      border-bottom: none;
+    }
+
+    .meditation-day:hover {
+      background: var(--color-bg-warm);
+    }
+
+    .meditation-day__badge {
+      flex-shrink: 0;
+      padding: 0.25rem 0.6rem;
+      background: var(--color-sage-light);
+      color: var(--color-sage);
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .meditation-day__content h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .meditation-day__content p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .extras-overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .extras-overview-card {
+      padding: 1.25rem 1.5rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border-light);
+      border-radius: 6px;
+      transition: all var(--transition);
+    }
+
+    .extras-overview-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .extras-overview-card__num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.1em;
+    }
+
+    .extras-overview-card h3 {
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    .review-cta {
+      background: var(--color-bg-warm);
+      border-radius: 8px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .review-cta h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    .review-cta p {
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Daniel Hanke</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="pages/services.html" class="nav__link">Leistungen</a>
+        <a href="pages/about.html" class="nav__link">Über mich</a>
+        <a href="pages/resources.html" class="nav__link">Ressourcen</a>
+        <a href="pages/contact.html" class="nav__link">Kontakt</a>
+      </div>
+      <a href="https://calendly.com/mitdaniel/business-coaching-audit" target="_blank" rel="noopener" class="btn btn--primary btn--sm nav__cta desktop-only">Erstgespräch buchen</a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="navMobile">
+      <a href="index.html">Home</a>
+      <a href="pages/services.html">Leistungen</a>
+      <a href="pages/about.html">Über mich</a>
+      <a href="pages/resources.html">Ressourcen</a>
+      <a href="pages/contact.html">Kontakt</a>
+      <a href="https://calendly.com/mitdaniel/business-coaching-audit" target="_blank" rel="noopener" class="btn btn--primary">Erstgespräch buchen</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="extras-hero">
+    <div class="container">
+      <span class="section-label">Selbstdisziplin 2.0</span>
+      <h1>Bonus-Bereich</h1>
+      <div class="divider centered"></div>
+      <p>Ich will es so leicht wie möglich für dich machen, nachhaltige Verbesserungen in dein Leben zu integrieren. Alle Extras sind kostenlos und ohne Anmeldung verfügbar.</p>
+    </div>
+  </section>
+
+  <!-- Quick Navigation -->
+  <div class="extras-nav">
+    <div class="extras-nav__inner">
+      <a href="#zusammenfassung" class="extras-nav__link">1. Buchzusammenfassung</a>
+      <a href="#motivationstraining" class="extras-nav__link">2. Motivationstraining</a>
+      <a href="#shakes" class="extras-nav__link">3. Shakes</a>
+      <a href="#video-zusammenfassung" class="extras-nav__link">4. Video-Zusammenfassung</a>
+      <a href="#updates" class="extras-nav__link">5. Neue Erkenntnisse</a>
+      <a href="#ausreden" class="extras-nav__link">6. Ausreden entkräften</a>
+      <a href="#quiz" class="extras-nav__link">7. Video-Quiz</a>
+      <a href="#sd3" class="extras-nav__link">8. Selbstdisziplin 3.0</a>
+      <a href="#mini-kurs" class="extras-nav__link">9. Mini-Kurs</a>
+      <a href="#meditation" class="extras-nav__link">10. Meditation</a>
+    </div>
+  </div>
+
+  <!-- 1. Kurze Zusammenfassung -->
+  <div class="extra-section" id="zusammenfassung">
+    <div class="container">
+      <span class="extra-section__number">1</span>
+      <h2>Kurze Zusammenfassung des gesamten Buchs</h2>
+      <p>Wiederholung ist der Schlüssel zum Behalten von Wissen. Diese Zusammenfassung gibt dir einen kompakten Überblick über alle Kernaussagen von Selbstdisziplin 2.0.</p>
+      <p style="margin-top: 1rem;"><strong>Die Vorteile:</strong></p>
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Zeitersparnis beim Wiederholen des Buchinhalts</li>
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Überblick über alle Kernaussagen auf einen Blick</li>
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Gut sichtbar aufhängen und regelmäßig lesen</li>
+      </ul>
+      <!-- PLATZHALTER: Ersetze mit dem tatsächlichen Download-Link zum PDF -->
+      <a href="#" class="download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+        Zusammenfassung herunterladen (PDF)
+      </a>
+    </div>
+  </div>
+
+  <!-- 2. Motivationstraining -->
+  <div class="extra-section" id="motivationstraining">
+    <div class="container">
+      <span class="extra-section__number">2</span>
+      <h2>Die Hörversion des Motivationstrainings</h2>
+      <p>Das Motivationstraining ist eines der besten Werkzeuge, um Motivation durch neuronale Umstrukturierung bei täglicher Anwendung zu entwickeln. Es gibt drei Versionen für unterschiedliche Erfahrungsstufen.</p>
+      <div class="download-group">
+        <!-- PLATZHALTER: Ersetze href mit den tatsächlichen Download-Links -->
+        <a href="#" class="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+          Anfängerversion (MP3)
+        </a>
+        <a href="#" class="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+          Standardversion (MP3)
+        </a>
+        <a href="#" class="download-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+          Profi-Version (MP3)
+        </a>
+      </div>
+      <p style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--color-text-muted);">
+        <strong>Anfängerversion:</strong> Viele Erklärungen, perfekt für den ersten Einstieg. &nbsp;
+        <strong>Standard:</strong> Empfohlen nach einer Woche, weniger verbale Anleitung. &nbsp;
+        <strong>Profi:</strong> Primär Hintergrundmusik, empfohlen nach 6 Monaten Praxis.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. Shakes -->
+  <div class="extra-section" id="shakes">
+    <div class="container">
+      <span class="extra-section__number">3</span>
+      <h2>Wie ich meine Shakes jeden Abend vorbereite</h2>
+      <p>Eine einfache Methode, um gesunde Ernährung in den Weg des geringsten Widerstands umzuleiten. Abends vorbereiten, morgens genießen.</p>
+      <p style="margin-top: 1rem;"><strong>Die Vorteile:</strong></p>
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Gesunde Ernährung wird zum Weg des geringsten Widerstands</li>
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Erhebliche Zeitersparnis am nächsten Tag</li>
+        <li style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Mehr Energie durch verteilte Nährstoffaufnahme über den Tag</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Video-Zusammenfassung -->
+  <div class="extra-section" id="video-zusammenfassung">
+    <div class="container">
+      <span class="extra-section__number">4</span>
+      <h2>Zusammenfassung von Selbstdisziplin 2.0 im Videoformat</h2>
+      <p>Das gesamte Buch in 76 Minuten zusammengefasst. Perfekt zum Wiederholen oder wenn du einen visuellen Überblick bevorzugst.</p>
+      <div style="margin-top: 1.5rem; max-width: 720px;">
+        <div style="aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border-light);">
+          <!-- Hörbuch-Video von deinem YouTube-Kanal: Selbstdisziplin 2.0 -->
+          <iframe src="https://www.youtube-nocookie.com/embed/6Wn_rYa8WE0" title="Selbstdisziplin 2.0 – Zusammenfassung" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Neue Erkenntnisse -->
+  <div class="extra-section" id="updates">
+    <div class="container">
+      <span class="extra-section__number">5</span>
+      <h2>Neue Erkenntnisse und Updates</h2>
+      <p>Nach der Veröffentlichung des Buchs sind mir ein paar neue Ideen gekommen, die ich gerne mit dir teile. Hier findest du ergänzende Gedanken und Aktualisierungen zu den Konzepten aus Selbstdisziplin 2.0.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-light);">Dieser Bereich wird regelmäßig aktualisiert, wenn neue Erkenntnisse hinzukommen.</p>
+    </div>
+  </div>
+
+  <!-- 6. Ausreden entkräften -->
+  <div class="extra-section" id="ausreden">
+    <div class="container">
+      <span class="extra-section__number">6</span>
+      <h2>Video-Training zum Entkräften von Ausreden</h2>
+      <p>Wissen alleine bringt leider nur sehr wenig. Erst wenn wir die praktische Fähigkeit erlangt haben, profitieren wir von ihr im großen Stil. Dieses Training hilft dir, Ausreden systematisch zu entkräften.</p>
+
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="method-step__number">Schritt 1</div>
+          <h4>Antworte mit "Na und?"</h4>
+          <p>Reagiere auf jede Ausrede mit dieser einfachen Frage. Sie bricht den Automatismus sofort.</p>
+        </div>
+        <div class="method-step">
+          <div class="method-step__number">Schritt 2</div>
+          <h4>Langfristige Vorteile auflisten</h4>
+          <p>"Wenn ich jetzt [wichtige Aufgabe] mache, ist das doch viel besser, weil..."</p>
+        </div>
+        <div class="method-step">
+          <div class="method-step__number">Schritt 3</div>
+          <h4>Nachteile der Versuchung benennen</h4>
+          <p>"[Versuchung] ist blöd, weil..." – Mach die Nachteile bewusst und konkret.</p>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-text-light);">
+        <strong>So nutzt du das Training:</strong> Pausiere das Video nach jeder Ausrede und übe die Technik laut aus. Halte dabei eine laute, tiefe und starke innere Stimme.
+      </p>
+
+      <div class="download-group">
+        <span class="quiz-option">Training ohne Musterlösung</span>
+        <span class="quiz-option">Training mit Musterlösung</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Video-Quiz -->
+  <div class="extra-section" id="quiz">
+    <div class="container">
+      <span class="extra-section__number">7</span>
+      <h2>Video-Quiz</h2>
+      <p>Wissen aus Büchern erfordert aktives Lernen, um es langfristig zu behalten. Regelmäßige Quizzes sind eine der effizientesten Methoden dafür. Die Frage-Antwort-Paare werden zufällig gemischt, um das Auswendiglernen der Reihenfolge zu verhindern.</p>
+
+      <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>So nutzt du das Quiz:</strong></p>
+      <ul style="list-style: disc; padding-left: 1.5rem; margin-top: 0.5rem;">
+        <li style="font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Pausiere das Video nach jeder Frage</li>
+        <li style="font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Versuche, die Antwort aus dem Gedächtnis abzurufen</li>
+        <li style="font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Falls unsicher: Lies nach und beantworte die Frage korrekt</li>
+        <li style="font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 0.4rem;">Wende das Wissen im Alltag an</li>
+      </ul>
+
+      <div class="quiz-options">
+        <span class="quiz-option">Quiz in Buchkapitel-Reihenfolge</span>
+        <span class="quiz-option">Quiz in zufälliger Reihenfolge (V1)</span>
+        <span class="quiz-option">Quiz in zufälliger Reihenfolge (V2)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Selbstdisziplin 3.0 -->
+  <div class="extra-section" id="sd3">
+    <div class="container">
+      <span class="extra-section__number">8</span>
+      <h2>Was Selbstdisziplin 3.0 wäre</h2>
+      <p>Gedanken und Konzepte, die über das hinausgehen, was in Selbstdisziplin 2.0 behandelt wird. Ein Ausblick auf weiterführende Ideen rund um Disziplin, Gewohnheiten und persönliche Entwicklung.</p>
+    </div>
+  </div>
+
+  <!-- 9. Grundlagen der Selbstdisziplin -->
+  <div class="extra-section" id="mini-kurs">
+    <div class="container">
+      <span class="extra-section__number">9</span>
+      <h2>Grundlagen der Selbstdisziplin (Mini-Kurs)</h2>
+      <p>Ein 6-teiliger Video-Kurs zu den Fundamenten der Selbstdisziplin. Jedes Modul behandelt einen zentralen Aspekt, der deine Basis für nachhaltigen Erfolg stärkt.</p>
+
+      <div class="course-modules">
+        <div class="course-module">
+          <div class="course-module__number">1</div>
+          <div>
+            <div class="course-module__title">Warum Selbstdisziplin so extrem wichtig ist</div>
+          </div>
+        </div>
+        <div class="course-module">
+          <div class="course-module__number">2</div>
+          <div>
+            <div class="course-module__title">Wie ein dynamisches Selbstbild alles verändern kann</div>
+          </div>
+        </div>
+        <div class="course-module">
+          <div class="course-module__number">3</div>
+          <div>
+            <div class="course-module__title">Wie Selbstliebe dein Leben verändern kann</div>
+          </div>
+        </div>
+        <div class="course-module">
+          <div class="course-module__number">4</div>
+          <div>
+            <div class="course-module__title">Wie du dein Energie-Level dauerhaft steigerst</div>
+          </div>
+        </div>
+        <div class="course-module">
+          <div class="course-module__number">5</div>
+          <div>
+            <div class="course-module__title">Wie Verantwortung übernehmen alles ändert</div>
+          </div>
+        </div>
+        <div class="course-module">
+          <div class="course-module__number">6</div>
+          <div>
+            <div class="course-module__title">Wie du eine Lebensvision entwickelst, die dein Leben verändert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Meditation -->
+  <div class="extra-section" id="meditation">
+    <div class="container">
+      <span class="extra-section__number">10</span>
+      <h2>Einführung in Meditation (7-Tage-Mini-Kurs)</h2>
+      <p>Ein 7-teiliger Audio-Kurs, der dich Schritt für Schritt in die Meditation einführt. Du lernst eine bewährte Technik, um innere Ruhe zu finden, Stress abzubauen und mentale Klarheit zu erlangen – plus philosophische Einblicke in Achtsamkeit und innere Stärke.</p>
+
+      <div class="meditation-grid">
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 1</span>
+          <div class="meditation-day__content">
+            <h4>Ankommen & Atembewusstsein</h4>
+            <p>Grundlagen der Atemmeditation und erste Schritte zur inneren Ruhe.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 2</span>
+          <div class="meditation-day__content">
+            <h4>Die Kunst der Achtsamkeit</h4>
+            <p>Vertiefung und Präsenz im gegenwärtigen Moment.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 3</span>
+          <div class="meditation-day__content">
+            <h4>Die Macht des inneren Körpers</h4>
+            <p>Energie bewusst spüren und den Körper als Anker nutzen.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 4</span>
+          <div class="meditation-day__content">
+            <h4>Loslassen</h4>
+            <p>Gedanken und Emotionen beobachten und frei geben.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 5</span>
+          <div class="meditation-day__content">
+            <h4>Mit Fragen meditieren</h4>
+            <p>Die Kraft der Selbst-Inquiry: Durch Fragen tiefer gehen.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 6</span>
+          <div class="meditation-day__content">
+            <h4>Erleben der Ganzheit</h4>
+            <p>Alles ist eins – Verbundenheit erfahren.</p>
+          </div>
+        </div>
+        <div class="meditation-day">
+          <span class="meditation-day__badge">Tag 7</span>
+          <div class="meditation-day__content">
+            <h4>Einfach Sein</h4>
+            <p>Finale Tiefenruhe und Integration in den Alltag.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review CTA -->
+  <section style="padding: 4rem 0;">
+    <div class="container">
+      <div class="review-cta">
+        <h3>Bitte tue mir einen großen Gefallen</h3>
+        <p>Wenn dir Selbstdisziplin 2.0 gefallen hat, würde mich eine ehrliche Rezension auf Amazon sehr freuen. Deine Rezension macht einen riesigen Unterschied!</p>
+        <a href="https://www.amazon.de/review/create-review/?asin=B09LWJXD3X" target="_blank" rel="noopener" class="btn btn--primary">Jetzt Rezension schreiben <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coaching CTA -->
+  <section class="section--dark cta-section">
+    <div class="container">
+      <div class="cta-section__inner">
+        <span class="section-label">Bereit für mehr?</span>
+        <h2>1:1 Intensiv-Coaching</h2>
+        <p>Du willst tiefgreifende Veränderungen? In meinem Coaching arbeiten wir strukturiert und individuell an deiner Selbstführung – mit bewährten Methoden, die über Jahre verfeinert wurden.</p>
+        <div class="btn-group">
+          <a href="https://calendly.com/mitdaniel/business-coaching-audit" target="_blank" rel="noopener" class="btn btn--accent btn--lg">Erstgespräch buchen <span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">Daniel Hanke</a>
+          <p>Business Coach & Psychological Consultant. Executive Coaching und Corporate Workshops für bewusste Führung.</p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/danielhanke" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@danielhanke" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/services.html">Leistungen</a></li>
+            <li><a href="pages/about.html">Über mich</a></li>
+            <li><a href="pages/resources.html">Ressourcen</a></li>
+            <li><a href="pages/contact.html">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Leistungen</h4>
+          <ul class="footer__links">
+            <li><a href="pages/services.html#coaching">Executive Coaching</a></li>
+            <li><a href="pages/services.html#workshops">Corporate Workshops</a></li>
+            <li><a href="pages/services.html#keynotes">Keynote Speaking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__heading">Kontakt</h4>
+          <ul class="footer__links">
+            <li><a href="https://calendly.com/mitdaniel/business-coaching-audit" target="_blank" rel="noopener">Erstgespräch buchen</a></li>
+            <li><a href="pages/contact.html">Kontaktformular</a></li>
+            <li><a href="https://www.linkedin.com/in/danielhanke" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.youtube.com/@danielhanke" target="_blank" rel="noopener">YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Daniel Hanke. Alle Rechte vorbehalten.</p>
+        <div class="footer__bottom-links">
+          <a href="pages/impressum.html">Impressum</a>
+          <a href="pages/datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
